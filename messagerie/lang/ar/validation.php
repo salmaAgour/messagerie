@@ -194,6 +194,12 @@ return [
     "The :attribute must contain at least one number." => "يجب أن يحتوي هذا الحقل رقم واحد على الأقل.",
     "The :attribute must contain at least one symbol." => "يجب أن يحتوي رمز واحد على الأقل.",
     "The :attribute must contain at least one uppercase and one lowercase letter." => "يجب أن يحتوي هذا الحقل على الأقل حرف كبير واحد وحرف صغير واحد.",
-    "The given :attribute has appeared in a data leak. Please choose a different :attribute." => "القيمة المستخدمة ضمن قائمة البيانات المسربة. الرجاء اختيار قيمة مختلفة."
+    "The given :attribute has appeared in a data leak. Please choose a different :attribute." => "القيمة المستخدمة ضمن قائمة البيانات المسربة. الرجاء اختيار قيمة مختلفة.",
+
+    'custom' => [
+        'password' => [
+            'min' => 'يجب أن يكون طول نص حقل كلمة المرور على الأقل :min حروفٍ',
+        ],
+    ],
 
 ];
