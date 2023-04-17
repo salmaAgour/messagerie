@@ -5,31 +5,27 @@ namespace App\Http\Controllers;
 use App\Models\MsgMod;
 use Illuminate\Http\Request;
 
-class HomeController extends Controller
+class MsgCont extends Controller
 {
     /**
-     * Create a new controller instance.
-     *
-     * @return void
+     * Display a listing of the resource.
      */
     public function __construct()
     {
         $this->middleware('auth');
     }
-
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Contracts\Support\Renderable
-     */
-    public function index()
+     public function index()
     {
         $msg=MsgMod::all();
-        return view('index' , ['i'=> $msg]);
+        return view('index',['item'=>$msg]);
     }
+
+    /**
+     * Show the form for creating a new resource.
+     */
     public function create()
     {
-        return view('create');
+        //
     }
 
     /**
@@ -37,13 +33,7 @@ class HomeController extends Controller
      */
     public function store(Request $request)
     {
-        $msg=new MsgMod();
-        $msg->Lib_Doc=$request->input('Lib_Doc');
-        $msg->Pages=$request->input('Pages');
-        $msg->Copies=$request->input('Copies');
-        $msg->save();
-        return redirect()->route('home');
-
+        //
     }
 
     /**
@@ -51,8 +41,7 @@ class HomeController extends Controller
      */
     public function show(string $id)
     {
-        $ms=MsgMod::findOrfail($id);
-        return view ('show' , ['item'=>$ms]);
+        //
     }
 
     /**
@@ -60,7 +49,7 @@ class HomeController extends Controller
      */
     public function edit(string $id)
     {
-        return('hi from edit');
+        //
     }
 
     /**
@@ -68,7 +57,7 @@ class HomeController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        return('hi from update');
+        //
     }
 
     /**
@@ -76,7 +65,6 @@ class HomeController extends Controller
      */
     public function destroy(string $id)
     {
-        return('hi from destroy');
+        //
     }
-
 }

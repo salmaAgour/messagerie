@@ -21,6 +21,13 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home/create', [App\Http\Controllers\HomeController::class, 'create'])->name('create');
+Route::post('/home', [App\Http\Controllers\HomeController::class, 'store'])->name('store');
+Route::get('/home/{id}', [App\Http\Controllers\HomeController::class, 'show'])->name('show');
+Route::get('/home/{id}/edit', [App\Http\Controllers\HomeController::class, 'edit'])->name('edit');
+Route::put('/home/{id}', [App\Http\Controllers\HomeController::class, 'update'])->name('update');
+Route::delete('/home/{id}', [App\Http\Controllers\HomeController::class, 'delete'])->name('delete');
+Route::resource('user', App\Http\Controllers\MsgCont::class);
 
 Route::group(['middleware' => ['auth']], function() {
     /**
