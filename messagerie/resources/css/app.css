@@ -1,0 +1,35 @@
+.ministryLogo {
+    width: 450px;
+    height: auto;
+}
+
+.logo {
+    width: fit-content;
+    height: auto;
+    margin: auto;
+    border-color: 5px solid white;
+}
+
+.manUsingLaptop {
+    width: 100%;
+    position: relative;
+}
+body {
+    background-image: url('../../../public/pictures/manUsingLaptop.jpg');
+    background-size: cover;
+}
+.nav{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+a:visited {
+    color: white;
+    text-decoration: none;
+}
+h3{
+    color: white;
+    text-align: center;
+    margin: 50px;
+}
