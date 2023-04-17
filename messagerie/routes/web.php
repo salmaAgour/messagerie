@@ -26,3 +26,10 @@ Route::post('/home', [App\Http\Controllers\HomeController::class, 'store'])->nam
 Route::get('/home/{id}', [App\Http\Controllers\HomeController::class, 'show'])->name('show');
 Route::delete('/home/{id}', [App\Http\Controllers\HomeController::class, 'delete'])->name('delete');
 Route::resource('user', App\Http\Controllers\MsgCont::class);
+
+Route::group(['middleware' => ['auth']], function() {
+    /**
+    * Logout Route
+    */
+    Route::get('/logout',[App\Http\Controllers\LogoutController::class, 'perform'])->name('logout');
+ });
