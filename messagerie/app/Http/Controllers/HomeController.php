@@ -25,11 +25,15 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $msg=MsgMod::all();
-        $msgsUnique = $msg->unique('NumEnv');
+        // $msg=MsgMod::all();
+        // $msgsUnique = $msg->unique('NumEnv');
         // $msgDuplicates = $msg->diff($msgsUnique);
-        
-        return view('index' , ['i'=> $msgsUnique]);
+        $msg=DB::table('msg_mods')->select('NumEnv' , DB::raw('count(id) as count'))
+                        ->groupBy('NumEnv')
+                        ->having('count','>=' , 1)
+                        ->get();
+                    dd($msg);
+        return view('index' , ['i'=> $msg]);
     }
 
     public function create()
@@ -54,7 +58,7 @@ class HomeController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(int $id)
     {
         $ms=MsgMod::findOrfail($id);
         return view ('show' , ['item'=>$ms]);

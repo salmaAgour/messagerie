@@ -5,10 +5,10 @@
     <div>
         Message envoyer 
         @forelse ($i as $item)
-            <a href={{Route("show" , $item->id)}}><button > show </button></a>
+            <a href={{Route("show" , $item->NumEnv->id)}}><button > show </button></a>
         @empty
             <h1>not found</h1>
-        @endforelse
+        @endforelse 
         <a href={{Route("create")}}><button > create </button></a>
 
         
