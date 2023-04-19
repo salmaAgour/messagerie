@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\MsgMod;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -25,8 +26,12 @@ class HomeController extends Controller
     public function index()
     {
         $msg=MsgMod::all();
-        return view('index' , ['i'=> $msg]);
+        $msgsUnique = $msg->unique('NumEnv');
+        // $msgDuplicates = $msg->diff($msgsUnique);
+        
+        return view('index' , ['i'=> $msgsUnique]);
     }
+
     public function create()
     {
         return view('create');
@@ -55,28 +60,5 @@ class HomeController extends Controller
         return view ('show' , ['item'=>$ms]);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        return('hi from edit');
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        return('hi from update');
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        return('hi from destroy');
-    }
-
+    
 }
