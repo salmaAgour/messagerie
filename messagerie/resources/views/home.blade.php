@@ -19,6 +19,5 @@
             </div>
         </div>
     </div>
-    <a href="{{ route('logout') }}" class="btn btn-primary my-3">logout</a>
 </div>
 @endsection
