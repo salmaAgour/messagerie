@@ -2,6 +2,8 @@
 
 @section('content')
 
+<a href={{Route("create" )}}><button > show </button></a> <br>
+
 <div class="d-flex justify-content-center p-2 m-2">
     <div class="card p-2 w-50">
         <div class="d-flex justify-content-between">
@@ -28,6 +30,12 @@
                 <div class="col">
                   <label for="">Copies </label>
                   <input type="text" name="Copies" class="form-control" >
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                  <label for="">Lib_Serv </label>
+                  <input type="text" name="Lib_Serv" class="form-control" >
                 </div>
             </div>
             <div class="my-2">

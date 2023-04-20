@@ -25,6 +25,8 @@ Route::get('/home/create', [App\Http\Controllers\HomeController::class, 'create'
 Route::post('/home', [App\Http\Controllers\HomeController::class, 'store'])->name('store');
 Route::get('/home/{id}', [App\Http\Controllers\HomeController::class, 'show'])->name('show');
 Route::delete('/home/{id}', [App\Http\Controllers\HomeController::class, 'delete'])->name('delete');
+Route::POST('/search',[App\Http\Controllers\HomeController::class,'search'])->name('search');
+
 Route::resource('user', App\Http\Controllers\MsgCont::class);
 
 Route::get('/admin_dashboard', [App\Http\Controllers\Admin\HomeController::class, 'index'])->middleware('role:admin');
