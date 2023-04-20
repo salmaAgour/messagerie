@@ -27,6 +27,9 @@ Route::get('/home/{id}', [App\Http\Controllers\HomeController::class, 'show'])->
 Route::delete('/home/{id}', [App\Http\Controllers\HomeController::class, 'delete'])->name('delete');
 Route::resource('user', App\Http\Controllers\MsgCont::class);
 
+Route::get('/admin_dashboard', [App\Http\Controllers\Admin\HomeController::class, 'index'])->middleware('role:admin');
+Route::get('/employee_dashboard',[App\Http\Controllers\Employee\HomeController::class, 'index'])->middleware('role:employee');
+
 Route::group(['middleware' => ['auth']], function() {
     /**
     * Logout Route

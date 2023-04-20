@@ -25,14 +25,13 @@ class HomeController extends Controller
      */
     public function index()
     {
-        // $msg=MsgMod::all();
+        $msg=MsgMod::all();
         // $msgsUnique = $msg->unique('NumEnv');
         // $msgDuplicates = $msg->diff($msgsUnique);
-        $msg=DB::table('msg_mods')->select('NumEnv' , DB::raw('count(id) as count'))
-                        ->groupBy('NumEnv')
-                        ->having('count','>=' , 1)
-                        ->get();
-                    dd($msg);
+        // $msg=DB::table('msg_mods')->select('NumEnv' , DB::raw('count(id) as count'))
+        //                 ->groupBy('NumEnv')
+        //                 ->having('count','>=' , 1)
+        //                 ->get();
         return view('index' , ['i'=> $msg]);
     }
 

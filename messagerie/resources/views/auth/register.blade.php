@@ -28,6 +28,23 @@
                         </div>
 
                         <div class="row mb-3 mx-5">
+                            <label for="role" class="col-md-4 col-form-label text-md-end">{{ __('الوظيفة') }}</label>
+
+                            <div class="col-md-7">
+                                <select class="form-select @error('role') is-invalid @enderror" aria-label=".form-select-sm" name="role" id="role" required value="{{ old('role') }}">
+                                    <option value="admin">admin</option>
+                                    <option value="employee">employee</option>
+                                </select>
+
+                                @error('role')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="row mb-3 mx-5">
                             <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('البريد الالكتروني') }}</label>
 
                             <div class="col-md-7">
