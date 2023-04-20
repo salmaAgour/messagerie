@@ -25,20 +25,15 @@ class HomeController extends Controller
      */
     public function index()
     {
-        // $msg=MsgMod::all();
-        // $msgsUnique = $msg->unique('NumEnv');
-        // $msgDuplicates = $msg->diff($msgsUnique);
-        $msg=DB::table('msg_mods')->select('NumEnv' , DB::raw('count(id) as count'))
-                        ->groupBy('NumEnv')
-                        ->having('count','>=' , 1)
-                        ->get();
-                    dd($msg);
-        return view('index' , ['i'=> $msg]);
+        return view('create');
     }
 
     public function create()
     {
-        return view('create');
+        $msg=MsgMod::all();
+    
+        return view('index' , ['i'=> $msg]);
+        
     }
 
     /**
@@ -50,6 +45,7 @@ class HomeController extends Controller
         $msg->Lib_Doc=$request->input('Lib_Doc');
         $msg->Pages=$request->input('Pages');
         $msg->Copies=$request->input('Copies');
+        $msg->Lib_Serv=$request->input('Lib_Serv');
         $msg->save();
         return redirect()->route('home');
 
@@ -62,6 +58,19 @@ class HomeController extends Controller
     {
         $ms=MsgMod::findOrfail($id);
         return view ('show' , ['item'=>$ms]);
+    }
+
+    public function search(Request $request)
+    {
+        
+
+        $NumEnv = $request->input('NumEnv');
+        
+        $item = DB::table('msg_mods')->where('NumEnv', $NumEnv)
+        
+            ->get();
+
+        return view('searchRes', ['i' => $item]);
     }
 
     
