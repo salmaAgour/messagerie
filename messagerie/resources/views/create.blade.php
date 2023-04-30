@@ -5,7 +5,7 @@
 <a href={{Route("create" )}}><button > show </button></a> <br>
 
 <div class="d-flex justify-content-center p-2 m-2">
-    <div class="card p-2 w-50">
+    <div class="card p-2 ">
         <div class="d-flex justify-content-between">
             <div class="">
                 <h3>Envoyer un message </h3>

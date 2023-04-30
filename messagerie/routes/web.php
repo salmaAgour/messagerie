@@ -20,21 +20,30 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-Route::get('/home/create', [App\Http\Controllers\HomeController::class, 'create'])->name('create');
-Route::post('/home', [App\Http\Controllers\HomeController::class, 'store'])->name('store');
-Route::get('/home/{id}', [App\Http\Controllers\HomeController::class, 'show'])->name('show');
-Route::delete('/home/{id}', [App\Http\Controllers\HomeController::class, 'delete'])->name('delete');
-Route::POST('/search',[App\Http\Controllers\HomeController::class,'search'])->name('search');
+//Routes for Admin
+Route::get('/admin/dashboard', [App\Http\Controllers\Admin\HomeController::class, 'index'])->name('home');
+Route::get('/admin/create', [App\Http\Controllers\Admin\HomeController::class, 'create'])->name('create');
+Route::post('/admin/dashboard', [App\Http\Controllers\Admin\HomeController::class, 'store'])->name('store');
+Route::get('/admin/dashboard/{id}', [App\Http\Controllers\Admin\HomeController::class, 'show'])->name('show');
+Route::delete('/admin/dashboard/{id}', [App\Http\Controllers\Admin\HomeController::class, 'delete'])->name('delete');
+Route::POST('/admin/search', [App\Http\Controllers\Admin\HomeController::class, 'search'])->name('search');
+
+//Routes for employee
+Route::get('/employee/dashboard', [App\Http\Controllers\Employee\HomeController::class, 'index'])->name('home');
+Route::get('/employee/dashboard/create', [App\Http\Controllers\Employee\HomeController::class, 'create'])->name('create');
+// Route::post('/employee/dashboard', [App\Http\Controllers\Employee\HomeController::class, 'store'])->name('store');
+Route::get('/employee/dashboard/{id}', [App\Http\Controllers\Employee\HomeController::class, 'show'])->name('show');
+Route::delete('/employee/dashboard/{id}', [App\Http\Controllers\Employee\HomeController::class, 'delete'])->name('delete');
+Route::POST('/employee/search', [App\Http\Controllers\Employee\HomeController::class, 'search'])->name('search');
 
 Route::resource('user', App\Http\Controllers\MsgCont::class);
 
-Route::get('/admin_dashboard', [App\Http\Controllers\Admin\HomeController::class, 'index'])->middleware('role:admin');
-Route::get('/employee_dashboard',[App\Http\Controllers\Employee\HomeController::class, 'index'])->middleware('role:employee');
+Route::get('/admin/dashboard', [App\Http\Controllers\Admin\HomeController::class, 'index'])->middleware('role:admin');
+Route::get('/employee/dashboard', [App\Http\Controllers\Employee\HomeController::class, 'index'])->middleware('role:employee');
 
-Route::group(['middleware' => ['auth']], function() {
+Route::group(['middleware' => ['auth']], function () {
     /**
-    * Logout Route
-    */
-    Route::get('/logout',[App\Http\Controllers\LogoutController::class, 'perform'])->name('logout');
- });
+     * Logout Route
+     */
+    Route::get('/logout', [App\Http\Controllers\LogoutController::class, 'perform'])->name('logout');
+});
