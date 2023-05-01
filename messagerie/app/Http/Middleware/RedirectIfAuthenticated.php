@@ -28,7 +28,7 @@ class RedirectIfAuthenticated
                break; 
       
             default:
-               return redirect('/home'); 
+               return redirect('/'); 
                break;
           }
         }

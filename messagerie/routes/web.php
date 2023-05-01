@@ -36,7 +36,7 @@ Route::get('/employee/dashboard/{id}', [App\Http\Controllers\Employee\HomeContro
 Route::delete('/employee/dashboard/{id}', [App\Http\Controllers\Employee\HomeController::class, 'delete'])->name('delete');
 Route::POST('/employee/search', [App\Http\Controllers\Employee\HomeController::class, 'search'])->name('search');
 
-Route::resource('user', App\Http\Controllers\MsgCont::class);
+// Route::resource('user', App\Http\Controllers\MsgCont::class);
 
 Route::get('/admin/dashboard', [App\Http\Controllers\Admin\HomeController::class, 'index'])->middleware('role:admin');
 Route::get('/employee/dashboard', [App\Http\Controllers\Employee\HomeController::class, 'index'])->middleware('role:employee');
