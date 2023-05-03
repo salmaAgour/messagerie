@@ -21,6 +21,8 @@ return new class extends Migration
             $table->date('dateEnv');
             $table->integer('NumEnv');
             $table->string('Lib_Serv');
+            $table->boolean('estRecu')->default(false);
+            $table->date('dateRecu');
             $table->timestamps();
         });
     }

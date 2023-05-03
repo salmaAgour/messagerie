@@ -1,24 +1,47 @@
-@extends('layouts.app')
+@extends('layouts.employeeLayout')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
+    <br />
+    <h1> نتائج البحث </h1>
+    <br />
+    <form action={{ Route('search') }} method="POST">
+        @csrf
+        <input type="text" name='NumEnv' placeholder="entre numero d'envoi">
+        <button type="submit"> search</button>
+    </form>
+    <table class="table text-center table-hover">
+        <thead class=" table-secondary">
+            <tr>
+                <th scope="col"> عنوان الوثيقة </th>
+                <th scope="col"> عدد النسخ </th>
+                <th scope="col"> عدد الصفحات </th>
+                <th scope="col"> اسم المصلحة </th>
+                <th scope="col"> رقم الإرسال </th>
+                <th scope="col"> تاريخ الاستلام</th>
+            </tr>
+        </thead>
+        <tbody>
+            @forelse ($messages as $item)
+                <tr>
+                    <th>{{ $item->Lib_Doc }}</th>
+                    <td>{{ $item->Copies }}</td>
+                    <td>{{ $item->Pages }}</td>
+                    <td>{{ $item->Lib_Serv }}</td>
+                    <td>{{ $item->NumEnv }}</td>
+                    <td>
+                        <form action="{{ route('update',$item->id) }}" method="post">
+                            @method('put')
+                            @csrf
+                            <input type="date" name='date' value={{now()}}>
+                            <button type="submit" class="btn btn-primary">تم</button>
+                        </form>
+                    </td>
+                </tr>
+            @empty
+                <h1>No data</h1>
+            @endforelse
 
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    {{ __('Hello EMPLOYEE, You are logged in!') }}
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<a href="{{ route('logout') }}" class="btn btn-primary my-3">logout</a>
+        </tbody>
+    </table>
+    <div class="row" style="margin-right:150px">{{ $messages->links() }}</div>
 @endsection
