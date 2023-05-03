@@ -18,6 +18,25 @@
 </head>
 
 <body dir="rtl">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <a class="navbar-brand" href="#">الرئيسية</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav d-flex">
+            <li class="nav-item active">
+              <a class="nav-link" href="#"> لائحة الرسائل الصادرة </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{{ route('createA') }}">كتابة رسالة</a>
+            </li>
+            <li class="nav-item justify-content-sm-end">
+              <a class="nav-link" href="{{ route('logout') }}">خروج</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
     <div>
         <div class="flex-shrink-0 p-3" style="width:250px;height:100%;position:fixed;background-color:orange;">
             <a href="#"
@@ -31,7 +50,7 @@
                     </a>
                 </li>
                 <li class="mb-1">
-                    <a class="btn btn-toggle align-items-center rounded collapsed text-white">
+                    <a class="btn btn-toggle align-items-center rounded collapsed text-white" href="{{ route('searchA') }}">
                         البحث عن رسالة
                     </a>
                 </li>
@@ -42,22 +61,15 @@
                 </li>
                 <li class="border-top my-3"></li>
                 <li class="mb-1">
-                    <button class="btn btn-toggle align-items-center rounded text-white" data-bs-toggle="collapse"
-                        data-bs-target="#account-collapse" aria-expanded="true">
-                        الحساب
-                    </button>
-                    <div class="collapse show" id="account-collapse" style="">
-                        <ul class="btn-toggle-nav list-unstyled fw-bold pb-1 small">
-                            <li><a href="#" class="rounded text-decoration-none"> حسابي </a></li>
-                            <li><a href="#" class="rounded text-decoration-none"> اعدادات </a></li>
-                            <li> <a href="{{ route('logout') }}" class="rounded text-decoration-none a">
-                                    خروج </a></li>
-                        </ul>
-                    </div>
+                 <a href="{{ route('logout') }}" class="btn btn-toggle align-items-center rounded text-white">
+                        خروج </a>
                 </li>
             </ul>
         </div>
-        <br>
+        </li>
+        </ul>
+    </div>
+    <br>
     </div>
     <div class="container">
         @yield('content')

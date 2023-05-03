@@ -24,16 +24,14 @@ Auth::routes();
 Route::get('/admin/dashboard', [App\Http\Controllers\Admin\HomeController::class, 'index'])->name('home');
 Route::get('/admin/create', [App\Http\Controllers\Admin\HomeController::class, 'create'])->name('createA');
 Route::post('/admin/dashboard', [App\Http\Controllers\Admin\HomeController::class, 'store'])->name('storeA');
-Route::get('/admin/dashboard/{id}', [App\Http\Controllers\Admin\HomeController::class, 'show'])->name('showA');
 Route::POST('/admin/search', [App\Http\Controllers\Admin\HomeController::class, 'search'])->name('searchA');
 
 //Routes for employee
 Route::get('/employee/dashboard', [App\Http\Controllers\Employee\HomeController::class, 'index'])->name('home');
 Route::get('/employee/dashboard/create', [App\Http\Controllers\Employee\HomeController::class, 'create'])->name('create');
-// Route::post('/employee/dashboard', [App\Http\Controllers\Employee\HomeController::class, 'store'])->name('store');
 Route::get('/employee/dashboard/{id}', [App\Http\Controllers\Employee\HomeController::class, 'show'])->name('show');
-Route::delete('/employee/dashboard/{id}', [App\Http\Controllers\Employee\HomeController::class, 'delete'])->name('delete');
-// Route::POST('/employee/search', [App\Http\Controllers\Employee\HomeController::class, 'search'])->name('search');
+Route::put('/employee/dashboard/{id}', [App\Http\Controllers\Employee\HomeController::class, 'update'])->name('update');
+Route::POST('/employee/search', [App\Http\Controllers\Employee\HomeController::class, 'search'])->name('search');
 
 // Route::resource('user', App\Http\Controllers\MsgCont::class);
 
