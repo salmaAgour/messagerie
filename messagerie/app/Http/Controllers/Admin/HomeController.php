@@ -1,55 +1,77 @@
 <?php
+
 namespace App\Http\Controllers\Admin;
+
 use App\Http\Controllers\Controller;
 use App\Models\MsgMod;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
-class HomeController extends Controller {
-  public function __construct() {
+class HomeController extends Controller
+{
+  public function __construct()
+  {
     $this->middleware('auth');
   }
-  public function index() {
-    return view('admin.home');
+  public function index()
+  {
+    $messages = DB::table('msg_mods')->paginate(10);
+    return view('admin.home', ['messages' => $messages]);
+  }
+
+  public function create()
+  {
+    $services = DB::table('service_models')->get();
+    return view('admin.create', ['services' => $services]);
   }
   /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        $msg=new MsgMod();
-        $msg->Lib_Doc=$request->input('Lib_Doc');
-        $msg->Pages=$request->input('Pages');
-        $msg->Copies=$request->input('Copies');
-        $msg->Lib_Serv=$request->input('Lib_Serv');
-        $msg->NomEtab=auth()->user()->name;
-        $msg->dateEnv=now()->toDateTimeString();
-        $msg->NumEnv=123;
-        $msg->save();
-        return redirect()->route('home');
+   * Store a newly created resource in storage.
+   */
+  public function store(Request $request)
+  {
+    $data = $request->only(['Lib_Doc', 'Pages', 'Copies', 'Lib_Serv']);
+    $rows = [];
 
+    $num = auth()->user()->message_count;
+    $num++;
+    User::where('id','=',auth()->user()->id)->update(['message_count' => $num]);
+
+
+    // dd($data);
+    foreach ($data['Lib_Doc'] as $index => $name) {
+      $rows[] = [
+        'Lib_Doc' => $data['Lib_Doc'][$index],
+        'Pages' => $data['Pages'][$index],
+        'Copies' => $data['Copies'][$index],
+        'Lib_Serv' => $data['Lib_Serv'][$index],
+        'NomEtab' => auth()->user()->name,
+        'dateEnv' => now()->toDateTimeString(),
+        'NumEnv' => $num,
+      ];
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(int $id)
-    {
-        $ms=MsgMod::findOrfail($id);
-        return view ('show' , ['item'=>$ms]);
-    }
+    DB::table('msg_mods')->insert($rows);
+    $messages = DB::table('msg_mods')->get();
+    return redirect()->to('/admin/dashboard')->with(['messages' => $messages]);
+  }
 
-    public function search(Request $request)
-    {
-        
 
-        $NumEnv = $request->input('NumEnv');
-        
-        $item = DB::table('msg_mods')->where('NumEnv', $NumEnv)
-        
-            ->get();
+  /**
+   * Display the specified resource.
+   */
+  public function show(int $id)
+  {
+    $ms = MsgMod::findOrfail($id);
+    return view('show', ['item' => $ms]);
+  }
 
-        return view('searchRes', ['i' => $item]);
-    }
+  public function search(Request $request)
+  {
+    $NumEnv = $request->input('NumEnv');
+    $messages = DB::table('msg_mods')->where('NumEnv', $NumEnv)->get();
 
+    return view('admin.searchRes', ['messages' => $messages]);
+  }
 }
