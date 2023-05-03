@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Models\MsgMod;
 use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
@@ -17,7 +16,7 @@ class HomeController extends Controller
   }
   public function index()
   {
-    $messages = DB::table('msg_mods')->paginate(10);
+    $messages = DB::table('msg_mods')->where('auteur','=',auth()->user()->id)->paginate(10);
     return view('admin.home', ['messages' => $messages]);
   }
 
@@ -38,8 +37,6 @@ class HomeController extends Controller
     $num++;
     User::where('id','=',auth()->user()->id)->update(['message_count' => $num]);
 
-
-    // dd($data);
     foreach ($data['Lib_Doc'] as $index => $name) {
       $rows[] = [
         'Lib_Doc' => $data['Lib_Doc'][$index],
@@ -47,6 +44,7 @@ class HomeController extends Controller
         'Copies' => $data['Copies'][$index],
         'Lib_Serv' => $data['Lib_Serv'][$index],
         'NomEtab' => auth()->user()->name,
+        'auteur'=>auth()->user()->id,
         'dateEnv' => now()->toDateTimeString(),
         'NumEnv' => $num,
       ];

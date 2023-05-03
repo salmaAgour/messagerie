@@ -17,6 +17,7 @@ return new class extends Migration
             $table->integer('Pages');
             $table->integer('Copies');
             $table->string('NomEtab');
+            $table->integer('auteur');
             $table->date('dateEnv');
             $table->integer('NumEnv');
             $table->string('Lib_Serv');
