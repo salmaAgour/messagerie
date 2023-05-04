@@ -14,12 +14,21 @@ class HomeController extends Controller {
     return view('employee.home', ['messages' => $messages]);
   }
   public function update(Request $request, string $id){
-    {
-      $etudiant = MsgMod::findOrFail($id);           
-      $res = $request->all();        
-      $etudiant->update(['estRecu'=>true]);                        
+    
+      $msgRecu = MsgMod::findOrFail($id);           
+      // $res = $request->all();        
+      $msgRecu->update(['estRecu'=>true ,'dateRecu'=> $request->input('date')]);                        
 
-      return redirect(url('/etudiants'))->with('ajour', 'Etudiant bien ete bien mis à jour');
+      return redirect(url('/employee/dashboard'));
   }
+  public function search(Request $request)
+  {
+    $NumEnv = $request->input('NumEnv');
+    // $NomEtab= $request->input('NomEtab');
+    $messages = DB::table('msg_mods')->where('NumEnv', $NumEnv)
+                                    // ->where('NomEtab',$NomEtab)
+    ->get();
+
+    return view('employee.searchE', ['messages' => $messages]);
   }
 }

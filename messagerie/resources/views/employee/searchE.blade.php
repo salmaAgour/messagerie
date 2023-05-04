@@ -1,0 +1,48 @@
+@extends('layouts.employeeLayout')
+
+@section('title', 'لائحة الرسائل الصادرة ')
+
+@section('content')
+
+    <h2 style="margin-right:150px"> نتائج البحث </h2>
+
+    <br>
+
+    <div class="d-flex flex-column justify-content-center p-2 m-2">
+        <form action={{ url('/employee/search') }} method="POST" style="margin-right:150px">
+            @csrf
+            <input type="text" name='NumEnv' class="form-control w-25" placeholder="أدخل رقم الإرسال"
+                style="display:inline;">
+            <input type="text" name='name' class="form-control w-25" placeholder=" أدخل اسم المؤسسة"
+                style="display:inline;">
+            <button type="submit" class="btn btn-primary" style="display:inline;"> بحث </button>
+        </form>
+        <br />
+        <table class="table text-center table-hover" style="margin-right:150px">
+            <thead class=" table-secondary">
+                <tr>
+                    <th scope="col"> عنوان الوثيقة </th>
+                    <th scope="col"> عدد النسخ </th>
+                    <th scope="col"> عدد الصفحات </th>
+                    <th scope="col"> اسم المصلحة </th>
+                    <th scope="col"> رقم الإرسال </th>
+                </tr>
+            </thead>
+            <tbody>
+                @forelse ($messages as $item)
+                    <tr>
+                        <th>{{ $item->Lib_Doc }}</th>
+                        <td>{{ $item->Copies }}</td>
+                        <td>{{ $item->Pages }}</td>
+                        <td>{{ $item->Lib_Serv }}</td>
+                        <td>{{ $item->NumEnv }}</td>
+                    </tr>
+                @empty
+                    <p style="margin-right:150px" class="alert alert-danger mt-1"> لا توجد بيانات </p>
+                @endforelse
+
+            </tbody>
+        </table>
+    </div>
+
+@endsection

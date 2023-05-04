@@ -2,11 +2,13 @@
 
 @section('content')
     <br />
-    <h1> نتائج البحث </h1>
+    <h1>  لائحة الرسائل الواردة </h1>
     <br />
     <form action={{ Route('search') }} method="POST">
         @csrf
-        <input type="text" name='NumEnv' placeholder="entre numero d'envoi">
+        <input type="text" name='NumEnv' class="form-control w-25" placeholder="أدخل رقم الإرسال" style="display:inline;">
+        <input type="text" name='name' class="form-control w-25" placeholder=" أدخل اسم المؤسسة"
+                style="display:inline;">
         <button type="submit"> search</button>
     </form>
     <table class="table text-center table-hover">

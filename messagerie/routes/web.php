@@ -36,6 +36,7 @@ Route::POST('/employee/search', [App\Http\Controllers\Employee\HomeController::c
 // Route::resource('user', App\Http\Controllers\MsgCont::class);
 
 Route::get('/admin/dashboard', [App\Http\Controllers\Admin\HomeController::class, 'index'])->middleware('role:admin');
+// Route::get('/admin/dashboard', [App\Http\Controllers\Admin\HomeController::class, 'index'])->name('homeA')->middleware('role:admin');
 Route::get('/employee/dashboard', [App\Http\Controllers\Employee\HomeController::class, 'index'])->middleware('role:employee');
 
 Route::group(['middleware' => ['auth']], function () {
