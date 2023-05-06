@@ -37,40 +37,7 @@
           </ul>
         </div>
       </nav>
-    <div>
-        <div class="flex-shrink-0 p-3" style="width:250px;height:100%;position:fixed;background-color:orange;">
-            <a href="#"
-                class="d-flex align-items-center justify-content-center pb-3 mb-3 text-decoration-none border-bottom">
-                <span class="fs-5 fw-semibold text-white"> الرئيسية </span>
-            </a>
-            <ul class="list-unstyled ps-0">
-                <li class="mb-1">
-                    <a class="btn btn-toggle align-items-center rounded collapsed text-white">
-                        لائحة الرسائل الصادرة
-                    </a>
-                </li>
-                <li class="mb-1">
-                    <a class="btn btn-toggle align-items-center rounded collapsed text-white" href="{{ route('searchA') }}">
-                        البحث عن رسالة
-                    </a>
-                </li>
-                <li class="mb-1">
-                    <a class="btn btn-toggle align-items-center rounded text-white" href="{{ route('createA') }}">
-                        كتابة رسالة
-                    </a>
-                </li>
-                <li class="border-top my-3"></li>
-                <li class="mb-1">
-                 <a href="{{ route('logout') }}" class="btn btn-toggle align-items-center rounded text-white">
-                        خروج </a>
-                </li>
-            </ul>
-        </div>
-        </li>
-        </ul>
-    </div>
-    <br>
-    </div>
+
     <div class="container">
         @yield('content')
     </div>

@@ -7,6 +7,8 @@ use App\Models\MsgMod;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use mPDF;
+use MpdfException;
 
 class HomeController extends Controller
 {
@@ -72,4 +74,6 @@ class HomeController extends Controller
 
     return view('admin.searchRes', ['messages' => $messages]);
   }
+  
+
 }

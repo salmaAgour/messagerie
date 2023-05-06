@@ -34,7 +34,7 @@
                         <form action="{{ route('update',$item->id) }}" method="post">
                             @method('put')
                             @csrf
-                            <input type="date" name='date' value={{now()}}>
+                            <input type="date" name='date' value={{$item->dateRecu}}>
                             <button type="submit" class="btn btn-primary">تم</button>
                         </form>
                     </td>

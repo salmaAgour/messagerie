@@ -54,6 +54,7 @@
 
                 <div class="my-2 d-flex justify-content-end">
                     <button type="submit" class="btn btn-primary w-25"> إرسال </button>
+                    <button type="submit" class="btn btn-primary w-25" onclick="printDocument()"> طباعة </button>
                 </div>
             </form>
         </div>
@@ -112,5 +113,16 @@
             });
             addRowBtn.disabled = !allFilled;
         });
+    </script>
+    <script>
+        function printDocument() {
+            var documentContent = '<html><head><title>Print Document</title></head><body><h1>hi</h1></body></html>';
+            var windowContent = '<html><head><title>Print Document</title></head><body>' + documentContent + '</body></html>';
+            var printWindow = window.open('', '', 'height=600,width=800');
+            printWindow.document.write(windowContent);
+            printWindow.document.close();
+            printWindow.print();
+            printWindow.close();
+        }
     </script>
 @endsection

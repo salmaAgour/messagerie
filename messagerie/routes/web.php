@@ -26,6 +26,7 @@ Route::get('/admin/create', [App\Http\Controllers\Admin\HomeController::class, '
 Route::post('/admin/dashboard', [App\Http\Controllers\Admin\HomeController::class, 'store'])->name('storeA');
 Route::POST('/admin/search', [App\Http\Controllers\Admin\HomeController::class, 'search'])->name('searchA');
 
+
 //Routes for employee
 Route::get('/employee/dashboard', [App\Http\Controllers\Employee\HomeController::class, 'index'])->name('home');
 Route::get('/employee/dashboard/create', [App\Http\Controllers\Employee\HomeController::class, 'create'])->name('create');
