@@ -1,16 +1,18 @@
 @extends('layouts.employeeLayout')
 
+@section('title', 'لائحة الرسائل الواردة ')
+
 @section('content')
     <br />
-    <h1>  لائحة الرسائل الواردة </h1>
+    <h1> لائحة الرسائل الواردة </h1>
     <br />
     <form action={{ Route('search') }} method="POST">
         @csrf
         <input type="text" name='NumEnv' class="form-control w-25" placeholder="أدخل رقم الإرسال" style="display:inline;">
-        <input type="text" name='name' class="form-control w-25" placeholder=" أدخل اسم المؤسسة"
-                style="display:inline;">
-        <button type="submit"> search</button>
+        <input type="text" name='name' class="form-control w-25" placeholder=" أدخل اسم المؤسسة" style="display:inline;">
+        <button class='btn text-white' type="submit" style="background-color: orange"> بحث</button>
     </form>
+    <br>
     <table class="table text-center table-hover">
         <thead class=" table-secondary">
             <tr>
@@ -31,16 +33,16 @@
                     <td>{{ $item->Lib_Serv }}</td>
                     <td>{{ $item->NumEnv }}</td>
                     <td>
-                        <form action="{{ route('update',$item->id) }}" method="post">
+                        <form action="{{ route('update', $item->id) }}" method="post">
                             @method('put')
                             @csrf
-                            <input type="date" name='date' value={{$item->dateRecu}}>
+                            <input type="date" name='date' value={{ now() }}>
                             <button type="submit" class="btn btn-primary">تم</button>
                         </form>
                     </td>
                 </tr>
             @empty
-                <h1>No data</h1>
+                <p> لا توجد رسائل </p>
             @endforelse
 
         </tbody>

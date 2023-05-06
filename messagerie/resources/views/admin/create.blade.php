@@ -3,8 +3,8 @@
 @section('title', 'كتابة رسالة جديدة')
 
 @section('content')
-
-    <h2 style="margin-right:150px"> كتابة رسالة جديدة </h2>
+    <br>
+    <h2 style="text-align:center"> كتابة رسالة جديدة </h2>
 
     <br>
 
@@ -54,7 +54,7 @@
 
                 <div class="my-2 d-flex justify-content-end">
                     <button type="submit" class="btn btn-primary w-25"> إرسال </button>
-                    <button type="submit" class="btn btn-primary w-25" onclick="printDocument()"> طباعة </button>
+                    <input type="button" class="btn btn-primary w-25 me-2" onclick="printDocument()" value='طباعة'/>  
                 </div>
             </form>
         </div>

@@ -3,20 +3,20 @@
 @section('title', 'لائحة الرسائل الصادرة ')
 
 @section('content')
-
-    <h2 style="margin-right:150px"> لائحة الرسائل الصادرة </h2>
+    <br>
+    <h2> لائحة الرسائل الصادرة </h2>
 
     <br>
 
     <div class="d-flex flex-column justify-content-center p-2 m-2">
-        <form action={{ url('/admin/search') }} method="POST" style="margin-right:150px">
+        <form action={{ url('/admin/search') }} method="POST">
             @csrf
             <input type="text" name='NumEnv' class="form-control w-25" placeholder="أدخل رقم الإرسال"
                 style="display:inline;">
-            <button type="submit" class="btn btn-primary" style="display:inline;"> بحث </button>
+            <button type="submit" class="btn text-white" style="display:inline;background-color:orange"> بحث </button>
         </form>
         <br />
-        <table class="table text-center table-hover" style="margin-right:150px">
+        <table class="table text-center table-hover">
             <thead class=" table-secondary">
                 <tr>
                     <th scope="col"> عنوان الوثيقة </th>
@@ -38,7 +38,7 @@
                         <td>{{ $item->NumEnv }}</td>
                     </tr>
                 @empty
-                    <p style="margin-right:150px" class="alert alert-danger mt-1"> لا توجد بيانات </p>
+                    <p class="alert alert-danger mt-1"> لا توجد بيانات </p>
                 @endforelse
 
             </tbody>

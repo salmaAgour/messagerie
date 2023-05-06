@@ -70,7 +70,8 @@ class HomeController extends Controller
   public function search(Request $request)
   {
     $NumEnv = $request->input('NumEnv');
-    $messages = DB::table('msg_mods')->where('NumEnv', $NumEnv)->get();
+    $auteur= auth()->user()->id;
+    $messages = DB::table('msg_mods')->where([['NumEnv', $NumEnv],['auteur',$auteur]])->get();
 
     return view('admin.searchRes', ['messages' => $messages]);
   }
