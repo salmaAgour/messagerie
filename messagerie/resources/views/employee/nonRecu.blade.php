@@ -1,17 +1,11 @@
 @extends('layouts.employeeLayout')
 
-@section('title', 'لائحة الرسائل الواردة ')
+@section('title', 'لائحة الرسائل الغير مستلمة ')
 
 @section('content')
     <br />
     <h1> لائحة الرسائل الواردة </h1>
     <br />
-    <form action={{ Route('search') }} method="POST" id="myForm">
-        @csrf
-        <input type="text" name='NumEnv' class="form-control w-25" placeholder="أدخل رقم الإرسال" style="display:inline;">
-        <input type="text" name='NomEtab' class="form-control w-25" placeholder=" أدخل إسم المؤسسة" style="display:inline;">
-        <button class='btn text-white' type="submit" style="background-color: orange"> بحث</button>
-    </form>
     <br>
     <table class="table text-center table-hover">
         <thead class=" table-secondary">
@@ -56,16 +50,5 @@
         </tbody>
     </table>
     <div class="row">{{ $messages->links() }}</div>
-    <script>
-        const myForm = document.getElementById('myForm');
-        myForm.addEventListener('submit', (event) => {
-            const numEnvInput = document.querySelector('input[name="NumEnv"]');
-            const nomEtabInput = document.querySelector('input[name="NomEtab"]');
 
-            if (!numEnvInput.value && !nomEtabInput.value) {
-                event.preventDefault();
-                alert('المرجو إدخال رقم الإرسال أو إسم المؤسسة على الأقل');
-            }
-        });
-    </script>
 @endsection

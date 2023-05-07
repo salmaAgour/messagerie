@@ -33,11 +33,10 @@ Route::get('/employee/dashboard/create', [App\Http\Controllers\Employee\HomeCont
 Route::get('/employee/dashboard/{id}', [App\Http\Controllers\Employee\HomeController::class, 'show'])->name('show');
 Route::put('/employee/dashboard/{id}', [App\Http\Controllers\Employee\HomeController::class, 'update'])->name('update');
 Route::POST('/employee/search', [App\Http\Controllers\Employee\HomeController::class, 'search'])->name('search');
+Route::get('/employee/nonRecu', [App\Http\Controllers\Employee\HomeController::class, 'nonRecu'])->name('nonRecu');
 
-// Route::resource('user', App\Http\Controllers\MsgCont::class);
 
 Route::get('/admin/dashboard', [App\Http\Controllers\Admin\HomeController::class, 'index'])->middleware('role:admin');
-// Route::get('/admin/dashboard', [App\Http\Controllers\Admin\HomeController::class, 'index'])->name('homeA')->middleware('role:admin');
 Route::get('/employee/dashboard', [App\Http\Controllers\Employee\HomeController::class, 'index'])->middleware('role:employee');
 
 Route::group(['middleware' => ['auth']], function () {
