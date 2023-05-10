@@ -58,8 +58,7 @@
             </form>
         </div>
     </div>
-    <img src='C:\xampp\htdocs\messagerie\messagerie\public\pictures\ministryLogo.png' alt="ministryLogo"
-        id="ministryLogo"style="display:none;" />
+
 
     <script>
         $(document).ready(function() {
