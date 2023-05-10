@@ -11,7 +11,7 @@
     <div class="d-flex flex-column justify-content-center p-2 m-2">
         <form action={{ url('/admin/search') }} method="POST">
             @csrf
-            <input type="text" name='NumEnv' class="form-control w-25" placeholder="أدخل رقم الإرسال"
+            <input type="text" name='NumEnv' class="form-control w-25" required placeholder="أدخل رقم الإرسال"
                 style="display:inline;">
             <button type="submit" class="btn text-white" style="display:inline;background-color:orange"> بحث </button>
         </form>

@@ -54,11 +54,12 @@
 
                 <div class="my-2 d-flex justify-content-end">
                     <button type="submit" class="btn btn-primary w-25"> إرسال </button>
-                    <input type="button" class="btn btn-primary w-25 me-2" onclick="printDocument()" value='طباعة'/>  
                 </div>
             </form>
         </div>
     </div>
+    <img src='C:\xampp\htdocs\messagerie\messagerie\public\pictures\ministryLogo.png' alt="ministryLogo"
+        id="ministryLogo"style="display:none;" />
 
     <script>
         $(document).ready(function() {
@@ -98,6 +99,7 @@
                 addRowBtn.disabled = true;
             });
         });
+
         const addRowBtn = document.querySelector('#plus');
         addRowBtn.disabled = true;
 
@@ -113,16 +115,6 @@
             });
             addRowBtn.disabled = !allFilled;
         });
-    </script>
-    <script>
-        function printDocument() {
-            var documentContent = '<html><head><title>Print Document</title></head><body><h1>hi</h1></body></html>';
-            var windowContent = '<html><head><title>Print Document</title></head><body>' + documentContent + '</body></html>';
-            var printWindow = window.open('', '', 'height=600,width=800');
-            printWindow.document.write(windowContent);
-            printWindow.document.close();
-            printWindow.print();
-            printWindow.close();
-        }
+
     </script>
 @endsection

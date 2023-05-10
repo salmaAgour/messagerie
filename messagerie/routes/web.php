@@ -34,6 +34,7 @@ Route::get('/employee/dashboard/{id}', [App\Http\Controllers\Employee\HomeContro
 Route::put('/employee/dashboard/{id}', [App\Http\Controllers\Employee\HomeController::class, 'update'])->name('update');
 Route::POST('/employee/search', [App\Http\Controllers\Employee\HomeController::class, 'search'])->name('search');
 Route::get('/employee/nonRecu', [App\Http\Controllers\Employee\HomeController::class, 'nonRecu'])->name('nonRecu');
+Route::get('/employee/recu', [App\Http\Controllers\Employee\HomeController::class, 'recu'])->name('recu');
 
 
 Route::get('/admin/dashboard', [App\Http\Controllers\Admin\HomeController::class, 'index'])->middleware('role:admin');

@@ -50,4 +50,10 @@ class HomeController extends Controller
     $messages = DB::table('msg_mods')->where('estRecu','=',false)->paginate(10);
     return view('employee.nonRecu', ['messages' => $messages]);
   }
+
+  public function recu()
+  {
+    $messages = DB::table('msg_mods')->where('estRecu','=',true)->paginate(10);
+    return view('employee.recu', ['messages' => $messages]);
+  }
 }

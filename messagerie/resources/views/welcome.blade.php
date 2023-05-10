@@ -12,7 +12,7 @@
             <div class="nav">
                 @auth
                     @if (auth()->user()->role == 'admin')
-                        <a href="{{ route('homeA') }}" class="btn btn-primary"> الرئيسية </a>
+                        <a href="{{  url('/admin/dashboard')}}" class="btn btn-primary"> الرئيسية </a>
                     @else
                     <a href="{{ url('/employee/dashboard') }}" class="btn btn-primary"> الرئيسية </a>
                     @endif

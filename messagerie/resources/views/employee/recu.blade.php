@@ -1,10 +1,10 @@
 @extends('layouts.employeeLayout')
 
-@section('title', 'لائحة الرسائل الغير مستلمة ')
+@section('title', 'لائحة الرسائل المستلمة ')
 
 @section('content')
     <br />
-    <h1> لائحة الرسائل الغير مستلمة </h1>
+    <h1> لائحة الرسائل المستلمة </h1>
     <br />
     <br>
     <table class="table text-center table-hover">
